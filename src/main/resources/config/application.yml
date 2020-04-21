@@ -17,5 +17,5 @@ files:
   storepath:
     icons:  "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\icons"
     artist-photos: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\artist_photos"
-    album-images: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\album_images"
+    album-covers: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\album_covers"
     images-dump: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\dump"

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class Album{
+public class Album implements Issue{
 	private long id;
 	private String title;
 	private int year;
@@ -24,6 +24,11 @@ public class Album{
 
 	public static Album.Builder newBuilder() {
 		return new Album().new Builder();
+	}
+
+	@Override
+	public void info() {
+		System.out.printf("This is album \"%s\" by %s containing %d tracks, released in %d\n", title, artist.getName(), trackList.size(), year);
 	}
 
 	public class Builder {
@@ -62,11 +67,14 @@ public class Album{
 		}
 
 		public Album.Builder setTrackList(List<Track> trackList) {
+			for (Track track : trackList)
+				track.setAlbum(Album.this);
 			Album.this.trackList = trackList;
 			return this;
 		}
 
 		public Album.Builder appendTrack(Track track) {
+			track.setAlbum(Album.this);
 			Album.this.trackList.add(track);
 			return this;
 		}

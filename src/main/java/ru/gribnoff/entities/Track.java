@@ -1,29 +1,13 @@
-package ru.gribnoff.persistnce.entities;
+package ru.gribnoff.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import ru.gribnoff.persistnce.entities.util.PersistableEntity;
-
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import java.util.UUID;
 
 @Data
-//@Entity
-//@NoArgsConstructor
-//@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Track extends PersistableEntity {
+public class Track{
 
-//	@Id
-//	@GeneratedValue
-	private UUID id;
-
+	private long id;
 	private String title;
-//	@ManyToOne
 	@JsonBackReference
 	private Album album;
 
@@ -39,7 +23,7 @@ public class Track extends PersistableEntity {
 		private Builder() {
 		}
 
-		public Track.Builder setId(UUID id) {
+		public Track.Builder setId(long id) {
 			Track.this.id = id;
 			return this;
 		}

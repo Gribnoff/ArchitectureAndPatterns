@@ -11,16 +11,10 @@ repositories {
 }
 
 dependencies {
-    runtimeOnly 'org.postgresql:postgresql:42.2.11'
-    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.12.Final'
-    implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '2.2.3'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.2'
-
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
-
-    implementation  'org.flywaydb:flyway-core:6.3.1'
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
     testImplementation 'io.rest-assured:rest-assured:4.3.0'

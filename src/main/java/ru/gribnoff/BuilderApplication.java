@@ -2,25 +2,24 @@ package ru.gribnoff;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.gribnoff.persistnce.entities.Album;
-import ru.gribnoff.persistnce.entities.Artist;
-import ru.gribnoff.persistnce.entities.Track;
+import ru.gribnoff.entities.Album;
+import ru.gribnoff.entities.Artist;
+import ru.gribnoff.entities.Track;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class BuilderApplication {
 	public static void main(String[] args) {
 		Artist artist = Artist.newBuilder()
-				.setId(UUID.fromString("90806402-753e-436b-85c4-cbe84e4644eb"))
+				.setId(1L)
 				.setName("bananas")
 				.setDescription("prime new banana band")
 				.build();
 
 		Album.Builder albumBuilder = Album.newBuilder();
 		Album album = albumBuilder
-				.setId(UUID.fromString("90806402-753e-436b-85c4-cbe84e4644eb"))
+				.setId(1L)
 				.setTitle("banana split")
 				.setArtist(artist)
 				.setYear(2222)
@@ -29,9 +28,9 @@ public class BuilderApplication {
 				.build();
 
 		List<Track> trackList = new ArrayList<>();
-		for (int i = 1; i < 10; i++) {
+		for (long i = 1; i < 10; i++) {
 			Track track = Track.newBuilder()
-					.setId(UUID.fromString("90806402-753e-436b-85c4-cbe84e4644eb".replace('9', (char) (i + '0'))))
+					.setId(i)
 					.setTitle("awesome banana track #" + i)
 					.setAlbum(album)
 					.build();
@@ -41,9 +40,9 @@ public class BuilderApplication {
 		album = albumBuilder
 				.setTrackList(trackList)
 				.appendTrack(Track.newBuilder()
-						.setId(UUID.fromString("00806402-753e-436b-85c4-cbe84e4644eb"))
+						.setId(10L)
 						.setAlbum(album)
-						.setTitle("last track")
+						.setTitle("last banana track")
 						.build())
 				.build();
 

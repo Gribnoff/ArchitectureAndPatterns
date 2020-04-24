@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 @Data
-public class Track{
+public class Track implements Issue{
 
 	private long id;
 	private String title;
@@ -16,6 +16,11 @@ public class Track{
 
 	public static Track.Builder newBuilder() {
 		return new Track().new Builder();
+	}
+
+	@Override
+	public void info() {
+		System.out.printf("A track called \"%s\" from \"%s\" album of %s\n", title, album.getTitle(), album.getArtist().getName());
 	}
 
 	public class Builder {

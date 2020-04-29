@@ -36,44 +36,44 @@ public class Album implements Issue{
 		private Builder() {
 		}
 
-		public Album.Builder setId(long id) {
+		public Builder setId(long id) {
 			Album.this.id = id;
 			return this;
 		}
 
-		public Album.Builder setTitle(String title) {
+		public Builder setTitle(String title) {
 			Album.this.title = title;
 			return this;
 		}
 
-		public Album.Builder setYear(int year) {
+		public Builder setYear(int year) {
 			Album.this.year = year;
 			return this;
 		}
 
-		public Album.Builder setArtist(Artist artist) {
+		public Builder setArtist(Artist artist) {
 			Album.this.artist = artist;
 			return this;
 		}
 
-		public Album.Builder setCover(Image cover) {
+		public Builder setCover(Image cover) {
 			Album.this.cover = cover;
 			return this;
 		}
 
-		public Album.Builder appendGenre(String genre) {
+		public Builder appendGenre(String genre) {
 			Album.this.genres.add(genre) ;
 			return this;
 		}
 
-		public Album.Builder setTrackList(List<Track> trackList) {
+		public Builder setTrackList(List<Track> trackList) {
 			for (Track track : trackList)
 				track.setAlbum(Album.this);
 			Album.this.trackList = trackList;
 			return this;
 		}
 
-		public Album.Builder appendTrack(Track track) {
+		public Builder appendTrack(Track track) {
 			track.setAlbum(Album.this);
 			Album.this.trackList.add(track);
 			return this;

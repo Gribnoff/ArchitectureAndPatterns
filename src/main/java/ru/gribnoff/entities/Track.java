@@ -28,17 +28,17 @@ public class Track implements Issue{
 		private Builder() {
 		}
 
-		public Track.Builder setId(long id) {
+		public Builder setId(long id) {
 			Track.this.id = id;
 			return this;
 		}
 
-		public Track.Builder setTitle(String title) {
+		public Builder setTitle(String title) {
 			Track.this.title = title;
 			return this;
 		}
 
-		public Track.Builder setAlbum(Album album) {
+		public Builder setAlbum(Album album) {
 			Track.this.album = album;
 			return this;
 		}

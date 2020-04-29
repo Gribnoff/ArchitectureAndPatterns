@@ -1,16 +1,19 @@
 package ru.gribnoff.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Data
-public class Album implements Issue{
+public class Album implements Issue, Iterable{
 	private long id;
 	private String title;
 	private int year;
+	@JsonBackReference
 	private Artist artist;
 	private Image cover;
 	private List<String> genres;
@@ -29,6 +32,11 @@ public class Album implements Issue{
 	@Override
 	public void info() {
 		System.out.printf("This is album \"%s\" by %s containing %d tracks, released in %d\n", title, artist.getName(), trackList.size(), year);
+	}
+
+	@Override
+	public Iterator iterator() {
+		return new TrackIterator();
 	}
 
 	public class Builder {
@@ -83,5 +91,23 @@ public class Album implements Issue{
 			return Album.this;
 		}
 
+	}
+
+	private class TrackIterator implements Iterator{
+		private int currentPosition = 0;
+
+		private TrackIterator() {}
+
+		@Override
+		public boolean hasNext() {
+			return currentPosition < trackList.size();
+		}
+
+		@Override
+		public Issue next() {
+			if (currentPosition >= trackList.size())
+				throw new NoSuchElementException();
+			return trackList.get(currentPosition++);
+		}
 	}
 }

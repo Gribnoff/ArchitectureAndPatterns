@@ -1,17 +1,33 @@
 package ru.gribnoff.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import javax.persistence.*;
 
 @Data
-public class Track implements Issue{
+@Entity
+@AllArgsConstructor
+@EqualsAndHashCode
+public final class Track implements Issue{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private String title;
+	@ManyToOne
+	@JoinTable(
+			name = "album_track",
+			joinColumns = @JoinColumn(name = "track_id"),
+			inverseJoinColumns = @JoinColumn(name = "album_id")
+	)
 	@JsonBackReference
 	private Album album;
 
-	private Track() {
+	protected Track() {
 	}
 
 	public static Track.Builder newBuilder() {

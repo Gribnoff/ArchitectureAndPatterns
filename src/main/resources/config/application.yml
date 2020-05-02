@@ -1,0 +1,21 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /musicapp
+
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.66.239:5432/musicapp?useSSL=false&serverTimezone=UTC
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+files:
+  storepath:
+    icons:  "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\icons"
+    artist-photos: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\artist_photos"
+    album-covers: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\album_covers"
+    images-dump: "B:\\myProjects\\GeekBrains\\Architecture and patterns\\images\\dump"

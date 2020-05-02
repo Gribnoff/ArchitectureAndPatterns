@@ -1,16 +1,28 @@
 package ru.gribnoff.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import javax.persistence.*;
 
 @Data
-public class Artist {
-
+@Entity
+@AllArgsConstructor
+@EqualsAndHashCode
+public final class Artist {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	private String name;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Image photo;
+
 	private String description;
 
-	private Artist() {
+	protected Artist() {
 	}
 
 	public static Builder newBuilder() {

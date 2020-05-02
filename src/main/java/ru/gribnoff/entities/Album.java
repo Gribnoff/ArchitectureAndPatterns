@@ -2,26 +2,50 @@ package ru.gribnoff.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Data
-public class Album implements Issue, Iterable{
+@Entity
+@AllArgsConstructor
+public final class Album implements Issue, Iterable{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String title;
 	private int year;
+	@ManyToOne
+	@JoinTable(
+			name = "artist_album",
+			joinColumns = @JoinColumn(name = "album_id"),
+			inverseJoinColumns = @JoinColumn(name = "artist_id")
+	)
 	@JsonBackReference
 	private Artist artist;
+	@OneToOne
 	private Image cover;
-	private List<String> genres;
+	@ElementCollection
+	@CollectionTable(
+			name = "album_genre"//,
+//			joinColumns = @JoinColumn(name = "album_id")
+	)
+	private List<String> genre;
+	@OneToMany
+	@JoinTable(
+			name = "album_track",
+			joinColumns = @JoinColumn(name = "album_id"),
+			inverseJoinColumns = @JoinColumn(name = "track_id")
+	)
 	@JsonManagedReference
 	private List<Track> trackList;
 
-	private Album() {
-		genres = new ArrayList<>();
+	protected Album() {
+		genre = new ArrayList<>();
 		trackList = new ArrayList<>();
 	}
 
@@ -70,7 +94,7 @@ public class Album implements Issue, Iterable{
 		}
 
 		public Builder appendGenre(String genre) {
-			Album.this.genres.add(genre) ;
+			Album.this.genre.add(genre) ;
 			return this;
 		}
 

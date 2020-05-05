@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Cacheable
 @AllArgsConstructor
 @EqualsAndHashCode
 public final class Track implements Issue{

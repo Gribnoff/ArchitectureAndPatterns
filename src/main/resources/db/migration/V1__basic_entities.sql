@@ -131,7 +131,7 @@ values (0, 0),
        (3, 3),
        (4, 4),
        (4, 5),
-       (4, 6);
+       (5, 6);
 
 -- table with genres corresponding to albums
 create table album_genre

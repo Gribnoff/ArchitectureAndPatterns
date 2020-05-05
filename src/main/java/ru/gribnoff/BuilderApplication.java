@@ -2,9 +2,9 @@ package ru.gribnoff;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.gribnoff.entities.Album;
-import ru.gribnoff.entities.Artist;
-import ru.gribnoff.entities.Track;
+import ru.gribnoff.persistence.entities.Album;
+import ru.gribnoff.persistence.entities.Artist;
+import ru.gribnoff.persistence.entities.Track;
 
 import java.util.ArrayList;
 import java.util.List;

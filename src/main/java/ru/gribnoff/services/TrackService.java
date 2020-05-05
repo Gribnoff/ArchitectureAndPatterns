@@ -3,9 +3,9 @@ package ru.gribnoff.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.gribnoff.entities.Track;
-import ru.gribnoff.persistnce.pojo.TrackPojo;
-import ru.gribnoff.persistnce.repositories.TrackRepository;
+import ru.gribnoff.persistence.entities.Track;
+import ru.gribnoff.persistence.pojo.TrackPojo;
+import ru.gribnoff.persistence.repositories.TrackRepository;
 
 import java.util.HashMap;
 import java.util.Map;

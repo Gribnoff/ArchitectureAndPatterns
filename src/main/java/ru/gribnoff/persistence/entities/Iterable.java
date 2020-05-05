@@ -1,4 +1,4 @@
-package ru.gribnoff.entities;
+package ru.gribnoff.persistence.entities;
 
 public interface Iterable {
 	Iterator iterator();

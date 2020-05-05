@@ -1,8 +1,8 @@
-package ru.gribnoff.persistnce.pojo;
+package ru.gribnoff.persistence.pojo;
 
 import lombok.Builder;
 import lombok.Data;
-import ru.gribnoff.entities.Album;
+import ru.gribnoff.persistence.entities.Album;
 
 @Data
 @Builder

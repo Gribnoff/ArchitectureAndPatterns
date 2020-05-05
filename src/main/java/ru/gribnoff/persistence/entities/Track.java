@@ -1,4 +1,4 @@
-package ru.gribnoff.entities;
+package ru.gribnoff.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
